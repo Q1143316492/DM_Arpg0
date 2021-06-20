@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "Runtime/CoreUObject/Public/UObject/GCObject.h"
 #include "UObject/WeakObjectPtr.h"

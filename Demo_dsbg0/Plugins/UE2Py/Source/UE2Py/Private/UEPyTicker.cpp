@@ -1,4 +1,4 @@
-#include "UEPyTicker.h"
+﻿#include "UEPyTicker.h"
 
 UEPyTicker* UEPyTicker::GetInstance()
 {

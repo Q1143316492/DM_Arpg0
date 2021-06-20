@@ -182,3 +182,19 @@ static void CppCallPythonFunction(const char* ModuleName, const char* FunctionNa
 
 
 
+### 2.1.3 UI 框架
+
+UI框架相关理念 https://www.yuque.com/docs/share/e0fd5bd5-7b01-4018-ac72-02ef115c4324?# 《UE4 UI框架初版》
+
+Cpp层 UI创建：
+
+详情见 MainGameMode.cpp StartPlay
+
+```cpp
+	UWndTestMain* WndTest = GameInstance->GetUIMgr()->ShowPanel<UWndTestMain>(TEXT("wnd_test_in_cpp"));
+	WndTest->HandleFunc();
+```
+
+Python层 UI创建:
+
+未完待续。。。

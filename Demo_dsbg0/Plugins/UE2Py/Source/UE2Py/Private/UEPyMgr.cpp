@@ -1,4 +1,4 @@
-#include "UEPyMgr.h"
+﻿#include "UEPyMgr.h"
 
 FUEPyMgr* FUEPyMgr::GetInstance()
 {
@@ -61,14 +61,13 @@ void FUEPyMgr::UnRegisterPyUObject(UEPy_PyUObject *PyUObject)
 
 int32 FUEPyMgr::RunGC()
 {
-	UE_LOG(LogTemp, Warning, TEXT("RunGC ..."));
 	int32 Garbaged = PyUObjectsGC();
 	return Garbaged;
 }
 
 void FUEPyMgr::CheckPyObjectGC()
 {
-	UE_LOG(LogTemp, Warning, TEXT("CheckPyObjectGC ... %d"), this->m_UObject2PyTracker.Num());
+	UE_LOG(LogPython, Warning, TEXT("CheckPyObjectGC ... %d"), this->m_UObject2PyTracker.Num());
 
 }
 

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "Containers/Ticker.h"
 #include "UE2Py.h"

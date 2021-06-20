@@ -1,4 +1,4 @@
-#include "UEPyModule.h"
+﻿#include "UEPyModule.h"
 
 PyDoc_STRVAR(UEPyDoc, "Unreal Engine Python module.");
 

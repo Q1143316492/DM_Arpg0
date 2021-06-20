@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 PyObject *UEPy_Log(PyObject *self, PyObject *args);
 PyObject *UEPy_LogError(PyObject *self, PyObject *args);

@@ -29,6 +29,7 @@ public class UE2Py : ModuleRules
 			new string[]
 			{
 				"Core",
+                "UMG",
 				// ... add other public dependencies that you statically link with here ...
 			}
 			);
@@ -41,7 +42,7 @@ public class UE2Py : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
-				// ... add private dependencies that you statically link with here ...	
+                // ... add private dependencies that you statically link with here ...	
 			}
 			);
 		
