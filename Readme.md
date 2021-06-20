@@ -27,11 +27,11 @@
 插件自带蓝图PyActor。Content/Script 自动加入Python模块搜索路径 sys.path
 
 ```cpp
-	UPROPERTY(EditAnywhere, Category = "Python", BlueprintReadWrite, meta = (ExposeOnSpawn = true))
-		FString PythonModule;
+UPROPERTY(EditAnywhere, Category = "Python", BlueprintReadWrite, meta = (ExposeOnSpawn = true))
+    FString PythonModule;
 
-	UPROPERTY(EditAnywhere, Category = "Python", BlueprintReadWrite, meta = (ExposeOnSpawn = true))
-		FString PythonClass;
+UPROPERTY(EditAnywhere, Category = "Python", BlueprintReadWrite, meta = (ExposeOnSpawn = true))
+    FString PythonClass;
 ```
 
 在PyActor实例设置模块路径和类名 例如Content/Script下main.py。main中有一个类PyActor。填写模块 `main` 和 `PyActor`。蓝图自动绑定Python脚本。并可扩展实现对应函数。
@@ -77,9 +77,9 @@ ps: 个人习惯python编码规范不是pep8
 unreal_engine 模块
 
 ```python
-    import unreal_engine
-    unreal_engine.UELog("log info")
-    unreal_engine.UELogError("log error")
+import unreal_engine
+unreal_engine.UELog("log info")
+unreal_engine.UELogError("log error")
 ```
 
 到C++ 层分别对应虚幻的 UE_LOG
@@ -92,8 +92,8 @@ UE_LOG(LogPython, Error, TEXT("%s"), UTF8_TO_TCHAR(Msg));
 不够更推荐的Log方式是。theApp通过嵌入 builtins。不需要import就能拿到。对应GacApp实例，代表客户端。目前只Log到虚幻输出，后续添加存盘
 
 ```python
-    theApp.logger.info("log info")
-    theApp.logger.error("log error")
+theApp.logger.info("log info")
+theApp.logger.error("log error")
 ```
 
 
@@ -153,31 +153,31 @@ UMainBPLibTools::CppCallPythonFunction("ue_py.ue_tick", "HandleTick", "i", NextT
 分别是Module Function 参数格式 和参数。参数格式需要参考Python C-API
 
 ```python
-	template<typename... Args>
-	static void CppCallPythonFunction(const char* ModuleName, const char* FunctionName, const char* ParseFmt, Args... PyParams)
-	{
-		FScopePythonGIL gil;
-		PyObject* PyModule = PyImport_ImportModule(ModuleName);
-		if (!PyModule)
-		{
-			UEPyLogPyError();
-			return;
-		}
-		PyObject* PyModuleDict = PyModule_GetDict(PyModule);
-		if (!PyModuleDict)
-		{
-			UEPyLogPyError();
-			return;
-		}
+template<typename... Args>
+static void CppCallPythonFunction(const char* ModuleName, const char* FunctionName, const char* ParseFmt, Args... PyParams)
+{
+    FScopePythonGIL gil;
+    PyObject* PyModule = PyImport_ImportModule(ModuleName);
+    if (!PyModule)
+    {
+        UEPyLogPyError();
+        return;
+    }
+    PyObject* PyModuleDict = PyModule_GetDict(PyModule);
+    if (!PyModuleDict)
+    {
+        UEPyLogPyError();
+        return;
+    }
 
-		PyObject* Func = PyDict_GetItemString(PyModuleDict, FunctionName);
-		if (Func && PyCallable_Check(Func))
-		{
-			PyObject* FuncRet = PyObject_CallFunction(Func, ParseFmt, PyParams...);
-			Py_XDECREF(FuncRet);
-		}
-		Py_DECREF(PyModule);
-	}
+    PyObject* Func = PyDict_GetItemString(PyModuleDict, FunctionName);
+    if (Func && PyCallable_Check(Func))
+    {
+        PyObject* FuncRet = PyObject_CallFunction(Func, ParseFmt, PyParams...);
+        Py_XDECREF(FuncRet);
+    }
+    Py_DECREF(PyModule);
+}
 ```
 
 
