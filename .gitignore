@@ -11,3 +11,4 @@ Demo_dsbg0/Content/StarterContent/
 
 Demo_dsbg0/Plugins/UE2Py/Binaries/
 Demo_dsbg0/Plugins/UE2Py/Intermediate/
+*.py[cod]
