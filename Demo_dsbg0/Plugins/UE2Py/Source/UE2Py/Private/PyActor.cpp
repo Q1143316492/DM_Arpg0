@@ -45,14 +45,12 @@ void APyActor::PreInitializeComponents()
 	}
 
 #if WITH_EDITOR
-	PyObject* PyReloadActorModule = PyImport_ReloadModule(PyActorModule);
-	if (!PyReloadActorModule)
+	PyActorModule = PyImport_ReloadModule(PyActorModule);
+	if (!PyActorModule)
 	{
 		UEPyLogPyError();
 		return;
 	}
-	Py_DECREF(PyActorModule);
-	PyActorModule = PyReloadActorModule;
 #endif
 
 	PyObject* PyActorModuleDict = PyModule_GetDict(PyActorModule);

@@ -34,3 +34,13 @@ class GacApp(object):
 def GacInitMain():
     app = GacApp()
     app.Init()
+
+    import tick_mgr
+    import unreal_engine
+
+    def _Test():
+        unreal_engine.UELogError("test tick")
+
+    T = tick_mgr.TickMgr()
+    T.RegisterOnceTick("TEST_TICK_TAG", 1000, _Test)
+

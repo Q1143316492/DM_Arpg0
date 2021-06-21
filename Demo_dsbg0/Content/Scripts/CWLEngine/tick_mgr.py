@@ -69,7 +69,6 @@ class TickMgr(object):
     # ===================== 对外用户接口 end ==================================
 
     def HandleTick(self, nTickID):
-        theApp.logger.error(f"tick_mgr handle tick {nTickID}")
         szTickName = self.m_dictTickID2TickName.get(nTickID)
         if not szTickName:
             theApp.logger.error(f"Handle Tick. TickID {nTickID} None")

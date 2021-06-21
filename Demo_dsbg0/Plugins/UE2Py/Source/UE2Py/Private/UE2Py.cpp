@@ -99,5 +99,5 @@ const char* UEPyUnicode_AsUTF8(PyObject *PyStr)
 
 void CheckPyObjectGC()
 {
-	FUEPyMgr::GetInstance()->CheckPyObjectGC();
+	//FUEPyMgr::GetInstance()->CheckPyObjectGC();
 }

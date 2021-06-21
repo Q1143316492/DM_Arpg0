@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "Main/MainGameInstance.h"
@@ -13,7 +13,7 @@ void UMainGameInstance::LogicInit()
 	UE_LOG(LogTemp, Warning, TEXT("GameInstance LogicInit..."));
 	
 	this->m_bInit = true;
-	this->GetUIMgr()->InitUIMgr();
+	//this->GetUIMgr()->InitUIMgr();
 }
 
 void UMainGameInstance::Shutdown()
@@ -21,10 +21,10 @@ void UMainGameInstance::Shutdown()
 	Super::Shutdown();
 	UE_LOG(LogTemp, Warning, TEXT("GameInstance Shutdown..."));
 
-	FScopePythonGIL gil;
-	UMainBPLibTools::CppCallPythonFunction("ue_py.ue_life", "GameInstanceShutdown", nullptr);
+	//FScopePythonGIL gil;
+	//UMainBPLibTools::CppCallPythonFunction("ue_py.ue_life", "GameInstanceShutdown", nullptr);
 
-	CheckPyObjectGC();
+	//CheckPyObjectGC();
 }
 
 
