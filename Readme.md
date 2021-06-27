@@ -197,4 +197,25 @@ Cpp层 UI创建：
 
 Python层 UI创建:
 
-未完待续。。。
+单例类GameWndMgr控制所有UI。首先需要注册UI
+
+```python
+WndMgr.RegisterWndClass("wnd_test", "gac.game_wnd.test.WndTestMain", "WndTestMain", EWndLayer.eNormal, 0,
+                        "/Game/Res/UMG/Test/TestMainWnd.TestMainWnd_C")
+```
+
+参数分别是：窗口名，模块名，窗口类，层级，Z-Order, 蓝图路径
+
+```python
+def RegisterWndClass(self, szWndName, szModuleName, szWndClass, eWndLayer, nZOrder, szBlueprint):
+    self.m_dictWndClassInfo[szWndName] = (szModuleName, szWndClass, eWndLayer, nZOrder, szBlueprint)
+```
+
+初始化时会把数据注册到C++层。后续显示窗口只需要
+
+```python
+    from gac.game_wnd.game_wnd_mgr import g_GameWndMain
+    g_GameWndMain.ShowUpWnd("wnd_test", True)
+```
+
+UI接口持续开发中。。。

@@ -1,5 +1,8 @@
 ﻿#pragma once
 
+#include "UE2Py.h"
+#include "UEPyTicker.h"
+
 PyObject *UEPy_Log(PyObject *self, PyObject *args);
 PyObject *UEPy_LogError(PyObject *self, PyObject *args);
 

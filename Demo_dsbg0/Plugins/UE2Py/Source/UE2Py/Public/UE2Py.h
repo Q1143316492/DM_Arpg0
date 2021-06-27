@@ -11,15 +11,15 @@
 
 class FUEPyMgr;
 
-typedef struct
+struct UEPy_PyUObject
 {
 	PyObject_HEAD
 	UObject *ue_UObject;
 	PyObject *py_PyObject;
 	PyObject *py_PyDict;
-} UEPy_PyUObject;
+};
 
-const char* UEPyUnicode_AsUTF8(PyObject *PyStr);
+UE2PY_API const char* UEPyUnicode_AsUTF8(PyObject *PyStr);
 
 DECLARE_LOG_CATEGORY_EXTERN(LogPython, Log, All);
 
@@ -37,8 +37,6 @@ void InitUnrealEnginePythonModule();
 UEPy_PyUObject* UEPy_GetPyUObject(UObject* Uobj);
 
 UE2PY_API void UEPyLogPyError();
-
-UE2PY_API void CheckPyObjectGC();
 
 class FUE2PyModule : public IModuleInterface
 {

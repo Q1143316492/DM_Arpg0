@@ -24,3 +24,17 @@ def RegisterOnceTick(*args, **kwargs) -> int:
 
 def UnRegisterTick(*args, **kwargs) -> bool:
     pass
+
+
+def UETestExtendMethod(*args, **kwargs):
+    pass
+
+
+# UI
+
+def AddWndClassInfo(*args, **kwargs) -> None:
+    pass
+
+
+def SetWndVisibility(*args, **kwargs):
+    pass

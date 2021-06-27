@@ -6,7 +6,6 @@ import os
 import sys
 import unreal_engine as ue
 
-ue.UELog("python module init")
 
 g_listReloadPath = []
 
@@ -27,9 +26,11 @@ def ReImport(szSearchRoot, szRootDir, szFile):
     if not szFile.endswith(".py"):
         return
     szAbsolutePath = os.path.join(szRootDir, szFile)
-    szModule = szAbsolutePath[len(szSearchRoot) + 1: -len(".py")]
+    szModule = szAbsolutePath[len(szSearchRoot) + 1: -len(".py")].replace("/", ".").replace("\\", ".")
     if szModule in sys.modules:
         sys.modules.pop(szModule)
+        __import__(szModule)
+    else:
         __import__(szModule)
 
 

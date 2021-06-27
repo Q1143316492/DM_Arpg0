@@ -10,7 +10,7 @@
  *
  */
 UCLASS()
-class UE2PY_API UWidgetBase : public UUserWidget
+class DEMO_DSBG0_API UWidgetBase : public UUserWidget
 {
 	GENERATED_BODY()
 public:

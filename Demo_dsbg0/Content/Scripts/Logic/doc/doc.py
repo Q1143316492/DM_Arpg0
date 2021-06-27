@@ -2,6 +2,15 @@
 # @author cwl 2021-06-20
 
 
+class TestClass(object):
+
+    def __init__(self):
+        pass
+
+    def TestFunc(self):
+        print("TestFunc")
+
+
 def LogDoc():
     import unreal_engine
     unreal_engine.UELog("log info")
@@ -9,6 +18,7 @@ def LogDoc():
 
     theApp.logger.info("log info")
     theApp.logger.error("log error")
+
 
 def TickDoc():
     import tick_mgr

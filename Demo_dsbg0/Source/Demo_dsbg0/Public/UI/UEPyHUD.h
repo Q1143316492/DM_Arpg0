@@ -7,6 +7,7 @@
 #include "Blueprint/UserWidget.h"
 #include "UI/WndBase.h"
 #include "UI/WidgetBase.h"
+#include "UMG/PyWnd/WndPyBase.h"
 #include "UEPyHUD.generated.h"
 
 
@@ -23,7 +24,7 @@ struct UMGData
  * 
  */
 UCLASS()
-class UE2PY_API AUEPyHUD : public AHUD
+class DEMO_DSBG0_API AUEPyHUD : public AHUD
 {
 	GENERATED_BODY()
 public:
@@ -74,7 +75,13 @@ public:
 		UE_LOG(LogTemp, Warning, TEXT("UIMgr CreateWidget (%s) Success ..."), *WndName);
 		return CreateWnd;
 	}
+
+	bool IsInit();
+	UWndPyBase* CreatePythonWnd(FString WndName);
+	UWndPyBase* GetPythonWnd(FString WndName);
+	bool HasCreatePyWnd(FString WndName);
 private:
 	bool m_bInit = false;
 	TMap<FString, UMGData> m_mapUMGCfgData;
+	TMap<FString, UWndBase*> m_mapPyWnd;
 };

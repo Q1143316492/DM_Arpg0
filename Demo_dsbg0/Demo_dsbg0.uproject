@@ -3,20 +3,21 @@
 	"EngineAssociation": "4.26",
 	"Category": "",
 	"Description": "",
-  "Modules": [
-    {
-      "Name": "Demo_dsbg0",
-      "Type": "Runtime",
-      "LoadingPhase": "Default",
-      "AdditionalDependencies": [
-        "Engine"
-      ]
-    }
-  ],
-  "Plugins": [
-    {
-      "Name": "UE2Py",
-      "Enabled": true
-    }
-  ]
+	"Modules": [
+		{
+			"Name": "Demo_dsbg0",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine",
+				"CoreUObject"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "UE2Py",
+			"Enabled": true
+		}
+	]
 }

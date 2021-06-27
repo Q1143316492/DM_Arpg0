@@ -3,6 +3,8 @@
 
 #include "Main/MainGameInstance.h"
 
+extern DEMO_DSBG0_API UMainGameInstance* MyGlobalGameInstance = nullptr;
+
 void UMainGameInstance::LogicInit()
 {
 	if (this->m_bInit)
@@ -11,9 +13,21 @@ void UMainGameInstance::LogicInit()
 		return;
 	}
 	UE_LOG(LogTemp, Warning, TEXT("GameInstance LogicInit..."));
-	
+	MyGlobalGameInstance = this;
 	this->m_bInit = true;
-	//this->GetUIMgr()->InitUIMgr();
+	this->ExtendUEPyMethod();
+}
+
+void UMainGameInstance::ExtendUEPyMethod()
+{
+	UUEPyMethodExtendMgr::GetInstance()->UEPyExtendEngineMethod();
+}
+
+void UMainGameInstance::Init()
+{
+	Super::Init();
+	UE_LOG(LogTemp, Warning, TEXT("GameInstance Init..."));
+	this->LogicInit();
 }
 
 void UMainGameInstance::Shutdown()
@@ -21,10 +35,8 @@ void UMainGameInstance::Shutdown()
 	Super::Shutdown();
 	UE_LOG(LogTemp, Warning, TEXT("GameInstance Shutdown..."));
 
-	//FScopePythonGIL gil;
-	//UMainBPLibTools::CppCallPythonFunction("ue_py.ue_life", "GameInstanceShutdown", nullptr);
-
-	//CheckPyObjectGC();
+	FScopePythonGIL gil;
+	UMainBPLibTools::CppCallPythonFunction("ue_py.ue_life", "GameInstanceShutdown", nullptr);
 }
 
 
@@ -41,7 +53,17 @@ AUEPyHUD* UMainGameInstance::GetUIMgr()
 		APlayerController *PlayerController = Cast<APlayerController>(GetWorld()->GetFirstPlayerController());
 		if (PlayerController)
 		{
-			return Cast<AUEPyHUD>(PlayerController->GetHUD());
+			AUEPyHUD *UIMgr = Cast<AUEPyHUD>(PlayerController->GetHUD());
+			if (UIMgr == nullptr)
+			{
+				return nullptr;
+			}
+			if (!UIMgr->IsInit())
+			{
+				UIMgr->InitUIMgr();
+			}
+
+			return UIMgr;
 		}
 		return nullptr;
 	}

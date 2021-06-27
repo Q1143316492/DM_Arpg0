@@ -7,8 +7,10 @@
 #include "UE2Py.h"
 #include "MainBPLibTools.h"
 #include "UI/UEPyHUD.h"
+#include "Main/UEPyMethodExtendMgr.h"
 #include "MainGameInstance.generated.h"
 
+extern DEMO_DSBG0_API UMainGameInstance* MyGlobalGameInstance;
 /**
  * 
  */
@@ -18,6 +20,9 @@ class DEMO_DSBG0_API UMainGameInstance : public UGameInstance
 	GENERATED_BODY()
 public:
 	void LogicInit();
+	void ExtendUEPyMethod();
+	
+	virtual void Init() override;
 	virtual void Shutdown() override;
 
 	AUEPyHUD* GetUIMgr();

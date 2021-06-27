@@ -11,7 +11,7 @@
  *
  */
 UCLASS()
-class UE2PY_API UWndBase : public UObject
+class DEMO_DSBG0_API UWndBase : public UObject
 {
 	GENERATED_BODY()
 public:
@@ -40,6 +40,7 @@ protected:
 		SubWnd->InitLogic();
 		return SubWnd;
 	}
+
 protected:
 	UWidgetBase* m_UserWidget = nullptr;
 };

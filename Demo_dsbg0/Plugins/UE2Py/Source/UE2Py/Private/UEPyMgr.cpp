@@ -48,7 +48,6 @@ void FUEPyMgr::UnRegisterPyUObject(UEPy_PyUObject *PyUObject)
 	FUEPyUObjectTracker *Tracker = this->m_UObject2PyTracker.Find(PyUObject->ue_UObject);
 	if (Tracker)
 	{
-		auto PyUObject = Tracker->PyUObject;
 		if (!Tracker->bPyOwned)
 		{
 			Py_CLEAR(Tracker->PyUObject->py_PyDict);

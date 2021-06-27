@@ -18,6 +18,7 @@ static PyMethodDef UEPyModuleMethods[] = {
 	{ "RegisterTick", UEPyRegisterTick, METH_VARARGS, ""},
 	{ "RegisterOnceTick", UEPyRegisterOnceTick, METH_VARARGS, ""},
 	{ "UnRegisterTick", UEPyUnRegisterTick, METH_VARARGS, ""},
+
 	{ NULL }
 };
 
