@@ -2,6 +2,7 @@
 
 
 #include "PyActor.h"
+#include <string>
 
 
 APyActor::APyActor()

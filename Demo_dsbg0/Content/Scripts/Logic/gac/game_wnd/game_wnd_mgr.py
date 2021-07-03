@@ -56,9 +56,9 @@ class GameWndMgr(object):
             theApp.logger.error(f"wnd config {szWndName} wnd class error {szModuleName} {szWndClass}")
             return
 
-        Wnd = WndClass()
-        Wnd.WndMgrInitWnd(self.m_IdMgr.GenID(), szWndName, szBlueprint)
-        Wnd.SetVisible(EWidgetVisibility.eVisible)
+        Wnd = WndClass(szWndName)
+        Wnd.WndMgrInitWnd(szBlueprint)
+        Wnd.ShowUpWnd(True)
         self.m_dictCreatedWnd[szWndName] = Wnd
 
 

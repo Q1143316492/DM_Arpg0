@@ -40,47 +40,11 @@ PyObject * AddWndClassInfo(PyObject * self, PyObject * args)
 	Py_RETURN_NONE;
 }
 
-PyObject * SetWndVisibility(PyObject * self, PyObject * args)
-{
-	PyObject* WndName;
-	int32 VisibilityEnum;
-	if (!PyArg_ParseTuple(args, "Oi:SetWndVisibility", &WndName, &VisibilityEnum))
-	{
-		return NULL;
-	}
-
-	PyObject *PyStrWndName = PyObject_Str(WndName);
-	if (!PyStrWndName)
-	{
-		return PyErr_Format(PyExc_Exception, "wnd name cannot be casted to string");
-	}
-
-	if (!MyGlobalGameInstance)
-	{
-		return PyErr_Format(PyExc_Exception, "GameInstance None");
-	}
-	UWndPyBase* PyWnd = nullptr;
-	FString FStrWndName(UTF8_TO_TCHAR(UEPyUnicode_AsUTF8(PyStrWndName)));
-	if (!MyGlobalGameInstance->GetUIMgr()->HasCreatePyWnd(FStrWndName))
-	{
-		PyWnd = MyGlobalGameInstance->GetUIMgr()->CreatePythonWnd(FStrWndName);
-	}
-	else
-	{
-		PyWnd = MyGlobalGameInstance->GetUIMgr()->GetPythonWnd(FStrWndName);
-	}
-	PyWnd->SetWndVisibility(ESlateVisibility::Visible);
-
-	Py_RETURN_NONE;
-}
-
-
 static PyMethodDef UEPyModuleExtendMethods[] = {
 	{"UETestExtendMethod", UETestExtendMethod, METH_VARARGS, "" },
 
 	// UI
 	{"AddWndClassInfo", AddWndClassInfo, METH_VARARGS, "" },
-	{"SetWndVisibility", SetWndVisibility, METH_VARARGS, "" },
 	{ NULL }
 };
 
@@ -115,3 +79,4 @@ void UUEPyMethodExtendMgr::UEPyExtendEngineMethod()
 		Py_DECREF(Func);
 	}
 }
+

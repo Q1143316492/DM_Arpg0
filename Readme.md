@@ -219,3 +219,19 @@ def RegisterWndClass(self, szWndName, szModuleName, szWndClass, eWndLayer, nZOrd
 ```
 
 UI接口持续开发中。。。
+
+
+
+
+
+# 又又又 烂尾了
+
+
+
+总结：
+
+1，CPython引用计数比较乱
+
+2，跨语言调用设计比较乱
+
+我们下个项目见

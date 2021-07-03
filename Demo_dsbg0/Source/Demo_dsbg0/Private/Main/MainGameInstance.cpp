@@ -21,6 +21,9 @@ void UMainGameInstance::LogicInit()
 void UMainGameInstance::ExtendUEPyMethod()
 {
 	UUEPyMethodExtendMgr::GetInstance()->UEPyExtendEngineMethod();
+
+	UEPy_InitPyWndClass();
+	UEPy_InitPyUWidgetClass();
 }
 
 void UMainGameInstance::Init()

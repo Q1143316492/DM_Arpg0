@@ -7,6 +7,7 @@
 #include "UI/WidgetBase.h"
 #include "WndBase.generated.h"
 
+
 /**
  *
  */
@@ -15,7 +16,7 @@ class DEMO_DSBG0_API UWndBase : public UObject
 {
 	GENERATED_BODY()
 public:
-	void InitWidge(UWidgetBase *Widget);
+	void InitWidge(UWidgetBase *Widget, FString WndName);
 	UWidgetBase* GetWidget();
 
 	virtual void InitLogic();
@@ -36,11 +37,13 @@ protected:
 			return nullptr;
 		}
 		SubWndType *SubWnd = NewObject<SubWndType>();
-		SubWnd->InitWidge(Widget);
+		SubWnd->InitWidge(Widget, Name.ToString());
 		SubWnd->InitLogic();
 		return SubWnd;
 	}
 
+	FString GetName() { return this->m_WndName;  }
 protected:
 	UWidgetBase* m_UserWidget = nullptr;
+	FString m_WndName;
 };

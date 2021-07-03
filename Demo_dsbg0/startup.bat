@@ -1,0 +1,1 @@
+D:/workspace/ue4/engine/UE_4.26/Engine/Binaries/Win64/UE4Editor.exe %~dp0/Demo_dsbg0.uproject -game WINDOWED -ResX=1024 -ResY=768

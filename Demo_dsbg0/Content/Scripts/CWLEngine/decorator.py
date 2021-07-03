@@ -15,3 +15,7 @@ def singleton(cls):
         return _dictInstance[cls]
 
     return _GetInstance
+
+
+def override(func):
+    return func

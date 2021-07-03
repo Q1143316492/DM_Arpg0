@@ -68,7 +68,7 @@ public:
 			UE_LOG(LogTemp, Warning, TEXT("UIMgr Cast Wnd Class Fail (%s) ..."), *WndName);
 			return nullptr;
 		}
-		CreateWnd->InitWidge(Widget);
+		CreateWnd->InitWidge(Widget, WndName);
 		CreateWnd->InitLogic();
 
 		Widget->AddToViewport();
@@ -79,7 +79,16 @@ public:
 	bool IsInit();
 	UWndPyBase* CreatePythonWnd(FString WndName);
 	UWndPyBase* GetPythonWnd(FString WndName);
+	UWndPyBase* GetPythonWnd(PyObject* PyObjWndName);
 	bool HasCreatePyWnd(FString WndName);
+	bool HasCreatePyWnd(PyObject* PyObjWndName);
+
+	// ------------------ PyWnd interface
+	// PyObject 字符串
+
+	//UWidget* GetChildWidget(PyObject* PyStrWndName, PyObject* PyStrChildWidgetName);
+
+
 private:
 	bool m_bInit = false;
 	TMap<FString, UMGData> m_mapUMGCfgData;

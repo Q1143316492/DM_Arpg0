@@ -7,6 +7,8 @@
 #include "UE2Py.h"
 #include "MainBPLibTools.h"
 #include "UI/UEPyHUD.h"
+#include "UMG/PyWnd/WndPyBase.h"
+#include "UMG/PyWnd/PyWidgetBase.h"
 #include "Main/UEPyMethodExtendMgr.h"
 #include "MainGameInstance.generated.h"
 

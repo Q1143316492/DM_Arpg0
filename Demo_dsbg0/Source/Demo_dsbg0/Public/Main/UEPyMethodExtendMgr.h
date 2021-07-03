@@ -4,18 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-#include "include/Python.h"
 #include "UE2Py.h"
 #include "UMG/PyWnd/WndPyBase.h"
 #include "UI/UEPyHUD.h"
-
-#if WITH_EDITOR
-#include "Editor/EditorEngine.h"
-#include "Editor/UnrealEdEngine.h"
-#else
-#include "Engine/GameEngine.h"
-#endif
-
 #include "UEPyMethodExtendMgr.generated.h"
 
 

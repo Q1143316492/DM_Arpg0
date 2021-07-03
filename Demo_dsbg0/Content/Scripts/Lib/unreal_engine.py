@@ -36,5 +36,13 @@ def AddWndClassInfo(*args, **kwargs) -> None:
     pass
 
 
-def SetWndVisibility(*args, **kwargs):
-    pass
+class PyWndWrapper(object):
+
+    def __init__(self, *args, **kwargs):
+        pass
+
+    def GetChild(*args, **kwargs):
+        pass
+
+    def ShowUpWnd(self, *args, **kwargs):
+        pass
